@@ -14,27 +14,9 @@ namespace NumberGuesserStiles
         //Entry Point Method
         static void Main(string[] args)
         {
-            // Set app vars
-            string appName = "Number Guesser";
-            string appVersion = "1.0.0";
-            string appAuthor = "Steve Stiles";
+            GetAppInfo();
 
-            //Change text color
-            Console.ForegroundColor = ConsoleColor.Green;
-
-            // Write app info
-            Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
-
-            //Reset text color
-            Console.ResetColor();
-
-            // Ask users name
-            Console.WriteLine("What is your name?");
-
-            //Get user info
-            string inputName = Console.ReadLine();
-
-            Console.WriteLine("Hello {0}, let's play a game...", inputName);
+            GreetUser();
 
             while (true)
             {
@@ -61,14 +43,7 @@ namespace NumberGuesserStiles
                     //Number catch
                     if (!int.TryParse(input, out guess))
                     {
-                        //Change text color
-                        Console.ForegroundColor = ConsoleColor.Red;
-
-                        // Wrong number
-                        Console.WriteLine("Please enter a number");
-
-                        //Reset text color
-                        Console.ResetColor();
+                        PrintColorMessage(ConsoleColor.Red, "Please enter a number");
 
                         // Keep going
                         continue;
@@ -80,28 +55,14 @@ namespace NumberGuesserStiles
                     //Match guess to number
                     if (guess != correctNumber)
                     {
-                        //Change text color
-                        Console.ForegroundColor = ConsoleColor.Red;
 
-                        // Wrong number
-                        Console.WriteLine("Wrong number, please try again!");
-
-                        //Reset text color
-                        Console.ResetColor();
+                        PrintColorMessage(ConsoleColor.Red, "Wrong number, please try again!");
                     }
                 }
 
                 //Output success
-                //Change text color
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                PrintColorMessage(ConsoleColor.Yellow, "You are a winner!");
 
-                // Right number
-                Console.WriteLine("You are a winner!");
-
-                //Reset text color
-                Console.ResetColor();
-
-                //Play again?
                 Console.WriteLine("Play Again? (Y or N)");
 
                 //Get answer
@@ -119,6 +80,44 @@ namespace NumberGuesserStiles
                 }
             }
         }
+
+        static void GetAppInfo() {
+            // Set app vars
+            string appName = "Number Guesser";
+            string appVersion = "1.0.0";
+            string appAuthor = "Steve Stiles";
+
+            //Change text color
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            // Write app info
+            Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
+
+            //Reset text color
+            Console.ResetColor();
+        }
+
+        static void GreetUser(){
+            // Ask users name
+            Console.WriteLine("What is your name?");
+
+            //Get user info
+            string inputName = Console.ReadLine();
+
+            Console.WriteLine("Hello {0}, let's play a game...", inputName);
+        }
+
+        static void PrintColorMessage(ConsoleColor color, string message){
+            //Change text color
+            Console.ForegroundColor = color;
+
+            // Wrong number
+            Console.WriteLine(message);
+
+            //Reset text color
+            Console.ResetColor();
+        }
+
     }
 }
 
