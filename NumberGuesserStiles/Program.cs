@@ -19,7 +19,22 @@ namespace NumberGuesserStiles
             string appVersion = "1.0.0";
             string appAuthor = "Steve Stiles";
 
+            //Change text color
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            // Write app info
             Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
+
+            //Reset text color
+            Console.ResetColor();
+
+            // Ask users name
+            Console.WriteLine("What is your name?");
+
+            //Get user info
+            string input = Console.ReadLine();
+
+            Console.WriteLine("Hello {0}, let's play a game...", input);
         }
     }
 }
