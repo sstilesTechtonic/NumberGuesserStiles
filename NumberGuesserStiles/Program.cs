@@ -32,9 +32,49 @@ namespace NumberGuesserStiles
             Console.WriteLine("What is your name?");
 
             //Get user info
-            string input = Console.ReadLine();
+            string inputName = Console.ReadLine();
 
-            Console.WriteLine("Hello {0}, let's play a game...", input);
+            Console.WriteLine("Hello {0}, let's play a game...", inputName);
+
+            //Set correct number
+            int correctNumber = 7;
+
+            // Init guess variable
+            int guess = 0;
+
+            // Ask user for a number
+            Console.WriteLine("Guess a number between 1 and 10");
+
+            while(guess != correctNumber) {
+                // Users input
+                string input = Console.ReadLine();
+
+                //Cast to int and put in guess variable
+                guess = Int32.Parse(input);
+
+                //Match guess to number
+                if(guess != correctNumber){
+                    //Change text color
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    // Wrong number
+                    Console.WriteLine("Wrong number, please try again!");
+
+                    //Reset text color
+                    Console.ResetColor();
+                }
+            }
+
+            //Output success
+            //Change text color
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+            // Right number
+            Console.WriteLine("You are a winner!");
+
+            //Reset text color
+            Console.ResetColor();
+
         }
     }
 }
