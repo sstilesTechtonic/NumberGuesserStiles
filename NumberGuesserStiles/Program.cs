@@ -14,8 +14,12 @@ namespace NumberGuesserStiles
         //Entry Point Method
         static void Main(string[] args)
         {
-            // Start Here //
-            Console.WriteLine("Hello World");
+            // Set app vars
+            string appName = "Number Guesser";
+            string appVersion = "1.0.0";
+            string appAuthor = "Steve Stiles";
+
+            Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
         }
     }
 }
