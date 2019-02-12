@@ -37,7 +37,12 @@ namespace NumberGuesserStiles
             Console.WriteLine("Hello {0}, let's play a game...", inputName);
 
             //Set correct number
-            int correctNumber = 7;
+            //int correctNumber = 7;
+
+            //Random number
+            Random random = new Random();
+
+            int correctNumber = random.Next(1,10);
 
             // Init guess variable
             int guess = 0;
@@ -48,6 +53,21 @@ namespace NumberGuesserStiles
             while(guess != correctNumber) {
                 // Users input
                 string input = Console.ReadLine();
+
+                //Number catch
+                if (!int.TryParse(input, out guess)) {
+                    //Change text color
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    // Wrong number
+                    Console.WriteLine("Please enter a number");
+
+                    //Reset text color
+                    Console.ResetColor();
+
+                    // Keep going
+                    continue;
+                }
 
                 //Cast to int and put in guess variable
                 guess = Int32.Parse(input);
